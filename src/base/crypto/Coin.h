@@ -39,6 +39,7 @@ public:
         KEVA,
         RAVEN,
         WOWNERO,
+        VEIL,
         ZEPHYR,
         TOWNFORGE,
         MAX
