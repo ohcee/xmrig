@@ -174,14 +174,16 @@ void xmrig::Job::setSigKey(const char *sig_key)
 int32_t xmrig::Job::nonceOffset() const
 {
    auto f = algorithm().family();
+   auto id = algorithm().id();
    if (f == Algorithm::KAWPOW)     return 32;
    if (f == Algorithm::GHOSTRIDER) return 76;
+   if (id == Algorithm::RX_VEIL) return 140;
    return 39;
 }
 
 uint32_t xmrig::Job::getNumTransactions() const
 {
-    if (!(m_algorithm.isCN() || m_algorithm.family() == Algorithm::RANDOM_X)) {
+    if (!(m_algorithm.isCN() || (m_algorithm.family() == Algorithm::RANDOM_X && m_algorithm.id() != Algorithm::RX_VEIL))) {
         return 0;
     }
 
